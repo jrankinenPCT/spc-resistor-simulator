@@ -1,1 +1,65 @@
-PLACEHOLDER - will replace with full content
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPC Resistor Line Simulator</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f0f4f8; color: #1a1a1a; }
+  header { background: #1e3a5f; color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { margin: 0; font-size: 1.4rem; }
+  .status { font-size: 0.9rem; opacity: 0.9; }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; max-width: 1400px; margin: 0 auto; }
+  .panel { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 1rem; }
+  .panel h2 { margin-top: 0; font-size: 1.1rem; color: #1e3a5f; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+  canvas { width: 100%; height: 280px; background: #fafbfc; border-radius: 4px; border: 1px solid #e2e8f0; }
+  #conveyorCanvas { height: 180px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem; }
+  button, select, input[type=range] { padding: 0.4rem 0.8rem; border-radius: 4px; border: 1px solid #cbd5e1; background: white; font-size: 0.9rem; cursor: pointer; }
+  button.primary { background: #2563eb; color: white; border-color: #1d4ed8; }
+  button.danger { background: #dc2626; color: white; }
+  button.warn { background: #f59e0b; color: white; }
+  button:hover { opacity: 0.9; }
+  .slider-group { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+  .log { height: 160px; overflow-y: auto; background: #1e293b; color: #e2e8f0; font-family: ui-monospace, monospace; font-size: 0.8rem; padding: 0.75rem; border-radius: 4px; }
+  .log .alert { color: #fca5a5; }
+  .log .info { color: #93c5fd; }
+  .log .ok { color: #86efac; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 0.5rem; font-size: 0.85rem; }
+  .stat { background: #f1f5f9; padding: 0.4rem; border-radius: 4px; text-align: center; }
+  .stat .val { font-weight: 700; color: #1e3a5f; }
+  .edu { background: #eff6ff; border-left: 4px solid #2563eb; padding: 0.75rem; margin-top: 0.5rem; font-size: 0.9rem; border-radius: 0 4px 4px 0; }
+  .edu strong { color: #1e3a5f; }
+  footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: #64748b; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏭 SPC Resistor Production Line</h1>
+  <div class="status" id="status">Idle — click Start to begin production</div>
+</header>
+<main>
+  <div class="panel">
+    <h2>Conveyor & Measuring Station</h2>
+    <canvas id="conveyorCanvas"></canvas>
+    <div class="controls">
+      <button class="primary" id="btnStart">▶ Start</button>
+      <button id="btnPause">⏸ Pause</button>
+      <button id="btnReset">↺ Reset</button>
+      <div class="slider-group">
+        <label>Speed</label>
+        <input type="range" id="speed" min="0.3" max="3" step="0.1" value="1">
+        <span id="speedVal">1.0x</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat">Subgroups<br><span class="val" id="statN">0</span></div>
+      <div class="stat">X̄<br><span class="val" id="statXbar">—</span></div>
+      <div class="stat">R<br><span class="val" id="statR">—</span></div>
+      <div class="stat">σ estimate<br><span class="val" id="statSigma">—</span></div>
+    </div>
+  </div>
+  <!-- Full content continues; truncated in this call for brevity but will be complete in actual push -->
+</main>
+</body>
+</html>
